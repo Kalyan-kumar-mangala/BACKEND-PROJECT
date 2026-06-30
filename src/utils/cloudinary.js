@@ -45,4 +45,27 @@ const uploadOnCloudinary = async (localFilePath) => {
 
 
 
-export {uploadOnCloudinary}
+async function deleteImageByUrl(imageUrl) {
+  try {
+    // 1. Extract the ID
+    const publicId = getPublicIdFromUrl(imageUrl);
+    
+    // 2. Trigger deletion
+    const result = await cloudinary.uploader.destroy(publicId, {
+      invalidate: true // Clears CDN cache so the URL stops working immediately
+    });
+    
+    return result;
+  } catch (error) {
+    console.error("Failed to delete asset:", error);
+    throw error;
+  }
+}
+
+// Usage execution:
+const targetUrl = "https://cloudinary.com";
+deleteImageByUrl(targetUrl);
+
+
+
+export {uploadOnCloudinary,deleteImageByUrl}
