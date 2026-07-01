@@ -5,7 +5,7 @@ import { upload } from "../midlewares/Multer.midleware.js";
 import { verifyJWT } from "../midlewares/auth.midleware.js";
 import { loginUser,logOutUser,RefreshToken,changeCurrentPassword,
     getCurrentUser,updateAccountDetails,updateUserAvatar,updateUserCoverImage
-    ,getUserChannelProfile,getWatchHistory } from "../controllers/Login.controllers.js";
+    ,getUserChannelProfile,getWatchHistory } from "../controllers/User.controllers.js";
 
 const router = Router();
 
